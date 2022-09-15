@@ -1,2 +1,6 @@
-# Unity_template_repo
-A repo to use as a template for unity. Note that git LFS will need to be installed.
+# [Insert Game Name Here]
+An endless boat racing game
+
+### Unity Version
+2021.3.0f1
+
