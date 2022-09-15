@@ -2,7 +2,7 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
 #
-[Ll]ibrary/
+# [Ll]ibrary/
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
@@ -15,7 +15,7 @@
 [Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
-![Aa]ssets/**/*.meta
+# ![Aa]ssets/**/*.meta
 
 # Recordings can get excessive in size
 [Rr]ecordings/
@@ -31,7 +31,7 @@
 *_p.c
 *_h.h
 *.ilk
-*.meta
+# *.meta
 *.obj
 *.iobj
 *.pch
@@ -81,9 +81,9 @@ ExportedObj/
 *.VC.db
 
 # Unity3D generated meta files
-*.pidb.meta
-*.pdb.meta
-*.mdb.meta
+# *.pidb.meta
+# *.pdb.meta
+# *.mdb.meta
 
 # Unity3D generated file on crash reports
 sysinfo.txt
