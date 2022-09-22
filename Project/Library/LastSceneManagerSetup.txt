@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/JasonC/Scenes/WindZones.unity
+- path: Assets/DylanHill/Assets/Scenes/PreviewScene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
