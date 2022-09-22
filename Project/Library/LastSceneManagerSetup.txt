@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/JasonC/Scenes/WindZones.unity
+- path: Assets/Tony/Scene/URP water.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
