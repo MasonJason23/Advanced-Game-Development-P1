@@ -2,37 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectables : MonoBehaviour
-{
-    public int itemID;
-    public float waitSecond;
+namespace Generate{
 
-    private void OnEnable() 
+    public class Collectables : MonoBehaviour
     {
-        EventHandler.CollectableItemAwake += StartCount;
-    }
+        public int itemID;
+        public float waitSecond;
 
-    private void OnDisable() 
-    {
-        EventHandler.CollectableItemAwake -= StartCount;
-    }
+        private void OnEnable() 
+        {
+            EventHandler.CollectableItemAwake += StartCount;
+        }
 
-    public GameObject ShowUpCollectableItem(Transform parent)
-    {
-        GameObject target = Instantiate(this.gameObject, parent);
-        return target;
-    }
+        private void OnDisable() 
+        {
+            EventHandler.CollectableItemAwake -= StartCount;
+        }
 
-    private void StartCount(GameObject gameObject)
-    {
-        StartCoroutine("WaitAndGotoObjectPool", gameObject);
-    }
+        public GameObject ShowUpCollectableItem(Transform parent)
+        {
+            GameObject target = Instantiate(this.gameObject, parent);
+            return target;
+        }
 
-    IEnumerator WaitAndGotoObjectPool(GameObject gameObject)
-    {
-        yield return new WaitForSeconds(waitSecond);
-        if(CollectableManager.Instance.collectablePool.Contains(gameObject.GetComponent<Collectables>()) == false)  CollectableManager.Instance.collectablePool.Add(gameObject.GetComponent<Collectables>());
-        gameObject.transform.position = new Vector3(500,500,500);
-    }
+        private void StartCount(GameObject gameObject)
+        {
+            StartCoroutine("WaitAndGotoObjectPool", gameObject);
+        }
 
+        IEnumerator WaitAndGotoObjectPool(GameObject gameObject)
+        {
+            yield return new WaitForSeconds(waitSecond);
+            if(CollectableManager.Instance.collectablePool.Contains(gameObject.GetComponent<Collectables>()) == false)  CollectableManager.Instance.collectablePool.Add(gameObject.GetComponent<Collectables>());
+            gameObject.transform.position = new Vector3(500,500,500);
+        }
+
+    }
 }
