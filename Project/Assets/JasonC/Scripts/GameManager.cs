@@ -19,12 +19,17 @@ public class GameManager : MonoBehaviour
 
     // UI reference
     public TextMeshProUGUI gameStateText;
-    public TextMeshProUGUI gameTimerText;
+    public TextMeshProUGUI gameScoreText;
     public TextMeshProUGUI playerTimerText;
 
-    public float gameTimeLimit = 60f;
+    // Keep track of player's time limit and score
+    public float gameScore = 0f;
     public float playerTimeLimit = 10f;
-
+    public float currentPlayerTL; 
+    
+    // Player Health (temporary)
+    public float playerHealth = 100f;
+    
     /*
      * <summary> C# event in which is invoke when the game state changes </summary>
      * <param name=gamePhase> Current game state (GamePhase) </param>
@@ -40,15 +45,15 @@ public class GameManager : MonoBehaviour
         SetupPlayingField();
         
         // Missing UI reference
-        if (!gameStateText)
+        if (!gameStateText || !playerTimerText || !gameStateText)
         {
-            Debug.Log("Missing reference component");
+            Debug.Log("Missing UI reference component(s)");
         }
         
-        // Initialize UI text
+        // Initialize UI text, if applicable
         ChangeGameStateText(state);
-        playerTimerText.text = playerTimeLimit.ToString("F1");
-        gameTimerText.text = gameTimeLimit.ToString("F1");
+        if (playerTimerText) playerTimerText.text = currentPlayerTL.ToString("F1");
+        if (gameScoreText) gameScoreText.text = gameScore.ToString("F0");
     }
 
     private void Update()
@@ -60,20 +65,28 @@ public class GameManager : MonoBehaviour
         }
         
         // Check time to make sure to change to next phase
-        if (playerTimeLimit <= 0.09f)
+        if (currentPlayerTL <= 0.09f)
         {
             StartNextPhase();
         }
 
-        // Temporary: reset game timer once "reaching" zero
+        // Temporary: reset player health when depleted
         // TODO: End the game when game timer reaches zero
-        if (gameTimeLimit <= 0.09f) gameTimeLimit = 60f;
+        if (playerHealth <= 0.09f) playerHealth = 100f;
 
-        // Count down based on Time.deltaTime
-        gameTimeLimit -= Time.deltaTime;
-        gameTimerText.text = gameTimeLimit.ToString("F1");
-        playerTimeLimit -= Time.deltaTime;
-        playerTimerText.text = playerTimeLimit.ToString("F1");
+        // Increase game score over time
+        gameScore += Time.deltaTime * 100f;
+        if (gameScoreText)
+        {
+            gameScoreText.text = gameScore.ToString("F0");
+        }
+
+        // Decrease player time limit (Player Phase)
+        currentPlayerTL -= Time.deltaTime;
+        if (playerTimerText)
+        {
+            playerTimerText.text = currentPlayerTL.ToString("F1");
+        }
     }
 
     // Used to literally set the playing field.
@@ -85,6 +98,9 @@ public class GameManager : MonoBehaviour
          *      - spawn player in a semi-random position on the map
          *      - instantiate game objects & UI into the game
          */
+
+        // Setting player time limit
+        currentPlayerTL = playerTimeLimit;
 
         // After setting up game area, player is immediately given their "turn" to play.
         state = GamePhase.PLAYERTURN;
@@ -105,14 +121,18 @@ public class GameManager : MonoBehaviour
         changePhase?.Invoke(state);
 
         // Reset player time
-        playerTimeLimit = 10f;
+        currentPlayerTL = playerTimeLimit;
     }
 
     // Changing UI text based on game state
     void ChangeGameStateText(GamePhase state)
     {
-        if (state == GamePhase.PLAYERTURN) gameStateText.text = "Player Turn Phase";
-        else if (state == GamePhase.BOATPHASE) gameStateText.text = "Sailboat Phase";
-        else if (state == GamePhase.END) gameStateText.text = "Game Over";
+        // Checks if UI is attached then change UI text, if true
+        if (gameStateText)
+        {
+            if (state == GamePhase.PLAYERTURN) gameStateText.text = "Player Turn Phase";
+            else if (state == GamePhase.BOATPHASE) gameStateText.text = "Sailboat Phase";
+            else if (state == GamePhase.END) gameStateText.text = "Game Over";
+        }
     }
 }
