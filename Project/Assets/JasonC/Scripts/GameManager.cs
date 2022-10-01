@@ -30,6 +30,12 @@ public class GameManager : MonoBehaviour
     // Player Health (temporary)
     public float playerHealth = 100f;
     
+    // Debug function
+    public void EndGame()  {
+        state = GamePhase.END;
+        changePhase?.Invoke(state);
+    }
+    
     /*
      * <summary> C# event in which is invoke when the game state changes </summary>
      * <param name=gamePhase> Current game state (GamePhase) </param>
