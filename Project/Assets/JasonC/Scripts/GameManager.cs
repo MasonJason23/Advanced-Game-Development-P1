@@ -14,6 +14,10 @@ public enum GamePhase
 
 public class GameManager : MonoBehaviour
 {
+    // Reference to UI
+    public GameOverScreen gameOverScreen;
+    public GameObject playerUI;
+    
     // Game state
     public GamePhase state = GamePhase.START;
 
@@ -23,7 +27,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerTimerText;
 
     // Keep track of player's time limit and score
-    public float gameScore = 0f;
+    public int gameScore = 0;
     public float playerTimeLimit = 10f;
     public float currentPlayerTL; 
     
@@ -49,17 +53,6 @@ public class GameManager : MonoBehaviour
     {
         // Instantiates game objects and UI, nothing implemented atm
         SetupPlayingField();
-        
-        // Missing UI reference
-        if (!gameStateText || !playerTimerText || !gameStateText)
-        {
-            Debug.Log("Missing UI reference component(s)");
-        }
-        
-        // Initialize UI text, if applicable
-        ChangeGameStateText(state);
-        if (playerTimerText) playerTimerText.text = currentPlayerTL.ToString("F1");
-        if (gameScoreText) gameScoreText.text = gameScore.ToString("F0");
     }
 
     private void Update()
@@ -67,6 +60,8 @@ public class GameManager : MonoBehaviour
         // Ends the game
         if (state == GamePhase.END)
         {
+            playerUI.SetActive(false);
+            gameOverScreen.SetUp(gameScore);
             return;
         }
         
@@ -81,10 +76,10 @@ public class GameManager : MonoBehaviour
         if (playerHealth <= 0.09f) playerHealth = 100f;
 
         // Increase game score over time
-        gameScore += Time.deltaTime * 100f;
+        gameScore += (int) (Time.deltaTime + 1);
         if (gameScoreText)
         {
-            gameScoreText.text = gameScore.ToString("F0");
+            gameScoreText.text = gameScore.ToString();
         }
 
         // Decrease player time limit (Player Phase)
@@ -98,12 +93,16 @@ public class GameManager : MonoBehaviour
     // Used to literally set the playing field.
     void SetupPlayingField()
     {
-        /* TODO
-         * Play loading screen (UI element)
-         * While the loading screen is active:
-         *      - spawn player in a semi-random position on the map
-         *      - instantiate game objects & UI into the game
-         */
+        // Missing UI reference
+        if (!gameStateText || !playerTimerText || !gameStateText || !gameOverScreen)
+        {
+            Debug.Log("Missing UI reference component(s)");
+        }
+        
+        // Initialize UI text, if applicable
+        ChangeGameStateText(state);
+        if (playerTimerText) playerTimerText.text = currentPlayerTL.ToString("F1");
+        if (gameScoreText) gameScoreText.text = gameScore.ToString();
 
         // Setting player time limit
         currentPlayerTL = playerTimeLimit;
