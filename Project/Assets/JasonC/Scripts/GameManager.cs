@@ -148,6 +148,7 @@ public class GameManager : MonoBehaviour
     IEnumerator DisablePlayerUI()
     {
         transition.SetTrigger(Transition);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
+        playerUI.SetActive(false);
     }
 }
