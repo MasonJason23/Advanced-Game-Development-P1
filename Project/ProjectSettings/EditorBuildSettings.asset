@@ -4,8 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: 
-  - enabled: 1
+  m_Scenes:
+  - enabled: 0
     path: Assets/JasonC/Scenes/WindZones.unity
     guid: 68fccd37f9abefe4f93bfd9c8c56ed08
   - enabled: 1
