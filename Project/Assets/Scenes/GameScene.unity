@@ -2202,7 +2202,6 @@ GameObject:
   - component: {fileID: 980187088}
   - component: {fileID: 980187087}
   - component: {fileID: 980187086}
-  - component: {fileID: 980187085}
   m_Layer: 5
   m_Name: EndTurnButton
   m_TagString: Untagged
@@ -2231,19 +2230,6 @@ RectTransform:
   m_AnchoredPosition: {x: 290, y: -136}
   m_SizeDelta: {x: 160, y: 16.0337}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &980187085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980187083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 625a3d7e63e730e45b1e64c2fc16b149, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  endButton: {fileID: 980187086}
 --- !u!114 &980187086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2288,9 +2274,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CanvasKeeperScript, Assembly-CSharp
-        m_MethodName: endTurn
+      - m_Target: {fileID: 894406292}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: StartNextPhase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3579,7 +3565,7 @@ MonoBehaviour:
   timer: {fileID: 1785448614}
   whoseTurn: {fileID: 550923723}
   endText: {fileID: 788768383}
-  endButton: {fileID: 980187085}
+  endButton: {fileID: 0}
   totalTime: 90
 --- !u!1 &1648604516
 GameObject:
