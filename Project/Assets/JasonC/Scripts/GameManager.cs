@@ -14,7 +14,10 @@ public enum GamePhase
 
 public class GameManager : MonoBehaviour
 {
-    // Reference to UI
+    // Singleton Approach
+    public static GameManager GmInstance { get; private set; }
+
+    // Reference to UI "screens"
     public GameOverScreen gameOverScreen;
     public GameObject playerUI;
     
@@ -24,18 +27,19 @@ public class GameManager : MonoBehaviour
     
     // Game state
     public GamePhase state = GamePhase.START;
+    public bool stopUpdating = false;
 
     // UI reference
-    public TextMeshProUGUI gameStateText;
-    public TextMeshProUGUI gameScoreText;
-    public TextMeshProUGUI playerTimerText;
+    public TextMeshProUGUI gameStateText; // to be deleted
+    public TextMeshProUGUI gameScoreText; // required
+    public TextMeshProUGUI playerTimerText; // to be deleted
 
     // Keep track of player's time limit and score
     public int gameScore = 0;
     public float playerTimeLimit = 10f;
     public float currentPlayerTL; 
     
-    // Player Health (temporary)
+    // Player Health
     public float playerHealth = 100f;
 
     // Debug function
@@ -52,6 +56,18 @@ public class GameManager : MonoBehaviour
      */ 
     public event Action<GamePhase> changePhase;
 
+    private void Awake()
+    {
+        if (GmInstance == null)
+        {
+            GmInstance = this;
+        }
+        else
+        {
+            Destroy(this); // There already is a GameManager in the scene
+        }
+    }
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -61,23 +77,24 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        // Ends the game
-        if (state == GamePhase.END)
+        // Game has ended
+        if (stopUpdating) return;
+        
+        // End the game when player health reaches zero
+        if (state == GamePhase.BOATPHASE)
         {
-            StartCoroutine(DisablePlayerUI());
-            gameOverScreen.SetUp(gameScore);
-            return;
+            playerHealth -= Time.deltaTime;
+            if (playerHealth <= 0.01f)
+            {
+                state = GamePhase.END;
+            }
         }
         
         // Check time to make sure to change to next phase
-        if (currentPlayerTL <= 0.09f)
+        if (currentPlayerTL <= 0f)
         {
             StartNextPhase();
         }
-
-        // Temporary: reset player health when depleted
-        // TODO: End the game when game timer reaches zero
-        if (playerHealth <= 0.09f) playerHealth = 100f;
 
         // Increase game score over time
         gameScore += (int) (Time.deltaTime + 1);
@@ -88,9 +105,17 @@ public class GameManager : MonoBehaviour
 
         // Decrease player time limit (Player Phase)
         currentPlayerTL -= Time.deltaTime;
-        if (playerTimerText)
+        // if (playerTimerText)
+        // {
+        //     playerTimerText.text = currentPlayerTL.ToString("F1");
+        // }
+
+        // Ends the game
+        if (state == GamePhase.END)
         {
-            playerTimerText.text = currentPlayerTL.ToString("F1");
+            StartCoroutine(DisablePlayerUI());
+            gameOverScreen.SetUp(gameScore);
+            stopUpdating = true;
         }
     }
 
@@ -98,11 +123,11 @@ public class GameManager : MonoBehaviour
     void SetupPlayingField()
     {
         // Missing UI reference
-        if (!gameStateText || !playerTimerText || !gameStateText || !gameOverScreen)
+        if (!gameStateText || !playerTimerText || !gameScoreText || !gameOverScreen)
         {
             Debug.Log("Missing UI reference component(s)");
         }
-        
+
         // Initialize UI text, if applicable
         ChangeGameStateText(state);
         if (playerTimerText) playerTimerText.text = currentPlayerTL.ToString("F1");
@@ -113,6 +138,9 @@ public class GameManager : MonoBehaviour
 
         // After setting up game area, player is immediately given their "turn" to play.
         state = GamePhase.PLAYERTURN;
+        
+        // Invoke event
+        changePhase?.Invoke(state);
     }
     
     // Function is also used by a UI button to start the BoatPhase

@@ -5,16 +5,9 @@ using TMPro;
 
 public class TurnTimerScript : MonoBehaviour
 {
-    [SerializeField] float startingTime = 10.0f;
-    private float timeRemaining;
+    private float timeRemaining = 0f;
+    public TMP_Text timerText;
 
-    [SerializeField] TMP_Text timerText;
-
-    void Start()
-    {
-        timeRemaining = startingTime;
-    }
-    
     void Update()
     {
         timerText.text = "TURN TIME: " + timeRemaining.ToString("F0");
