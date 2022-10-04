@@ -16,7 +16,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("WindZones");
+        SceneManager.LoadScene("GameScene");
     }
     
     public void MainMenu()

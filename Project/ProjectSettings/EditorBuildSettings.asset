@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/JasonC/Scenes/WindZones.unity
     guid: 68fccd37f9abefe4f93bfd9c8c56ed08
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 0ba1315f49621ea40880000ba40c4b1d
   m_configObjects: {}
