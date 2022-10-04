@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     public GameOverScreen gameOverScreen;
     public GameObject playerUI;
     
+    // Reference to Animator
+    public Animator transition;
+    private static readonly int Transition = Animator.StringToHash("Transition");
+    
     // Game state
     public GamePhase state = GamePhase.START;
 
@@ -33,7 +37,7 @@ public class GameManager : MonoBehaviour
     
     // Player Health (temporary)
     public float playerHealth = 100f;
-    
+
     // Debug function
     public void EndGame()  {
         state = GamePhase.END;
@@ -60,7 +64,7 @@ public class GameManager : MonoBehaviour
         // Ends the game
         if (state == GamePhase.END)
         {
-            playerUI.SetActive(false);
+            StartCoroutine(DisablePlayerUI());
             gameOverScreen.SetUp(gameScore);
             return;
         }
@@ -139,5 +143,11 @@ public class GameManager : MonoBehaviour
             else if (state == GamePhase.BOATPHASE) gameStateText.text = "Sailboat Phase";
             else if (state == GamePhase.END) gameStateText.text = "Game Over";
         }
+    }
+
+    IEnumerator DisablePlayerUI()
+    {
+        transition.SetTrigger(Transition);
+        yield return new WaitForSeconds(1);
     }
 }

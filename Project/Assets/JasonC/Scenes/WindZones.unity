@@ -818,6 +818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 577106298}
+  - component: {fileID: 577106299}
   m_Layer: 5
   m_Name: Player UI
   m_TagString: Untagged
@@ -847,6 +848,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &577106299
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577106297}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &634573092
 GameObject:
   m_ObjectHideFlags: 3
@@ -1804,6 +1817,7 @@ GameObject:
   - component: {fileID: 1594243844}
   - component: {fileID: 1594243843}
   - component: {fileID: 1594243842}
+  - component: {fileID: 1594243846}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1894,6 +1908,26 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!95 &1594243846
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1594243841}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 275c13dbe5ae35342ade8c38860b1b06, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1627376896
 GameObject:
   m_ObjectHideFlags: 0
@@ -2381,6 +2415,7 @@ GameObject:
   - component: {fileID: 1932378390}
   - component: {fileID: 1932378389}
   - component: {fileID: 1932378391}
+  - component: {fileID: 1932378392}
   m_Layer: 5
   m_Name: GameOver Screen
   m_TagString: Untagged
@@ -2463,6 +2498,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreGUI: {fileID: 1627376898}
+--- !u!225 &1932378392
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932378387}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2097249514
 GameObject:
   m_ObjectHideFlags: 0
@@ -2793,6 +2840,10 @@ PrefabInstance:
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 577106297}
+    - target: {fileID: 6951326433088654541, guid: a2bb4a79e7aaa9e4daab80478246ad39, type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 1594243846}
     - target: {fileID: 6951326433088654541, guid: a2bb4a79e7aaa9e4daab80478246ad39, type: 3}
       propertyPath: gameScoreText
       value: 
