@@ -44,9 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e59a749aa80804ba13226a70fecaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverScreen: {fileID: 0}
+  playerUI: {fileID: 0}
+  transition: {fileID: 0}
   state: 0
   gameStateText: {fileID: 0}
-  gameTimerText: {fileID: 0}
+  gameScoreText: {fileID: 0}
   playerTimerText: {fileID: 0}
-  gameTimeLimit: 60
-  playerTimeLimit: 10
+  gameScore: 0
+  playerTimeLimit: 3
+  currentPlayerTL: 0
+  playerHealth: 100

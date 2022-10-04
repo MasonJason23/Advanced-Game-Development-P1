@@ -53,3 +53,5 @@ MonoBehaviour:
   death_circle_radius: 750
   fastest_speed: 23
   slowest_speed: 5
+  populateAtStart: 1
+  boatPhase: 0
