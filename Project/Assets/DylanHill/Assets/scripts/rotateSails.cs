@@ -7,7 +7,8 @@ public class rotatesails : MonoBehaviour
     // Start is called before the first frame update
     public Vector3 windVector = new Vector3(1, 0, 0);
     public float boatSpeed = 15.0f;
-    public float speed = 15.0f;
+
+    public float speed=0;
     // Start is called before the first frame update
     void Start()
     {
