@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class RotationNumberScript : MonoBehaviour
 {
+    // this script displays the values of the UI sliders
     public Slider slider;
     private int rotation;
     [SerializeField] TMP_Text rotateText;

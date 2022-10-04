@@ -8,38 +8,45 @@ using TMPro;
 public class CanvasKeeperScript : MonoBehaviour
 {
     // This script manages the values for the other UI scripts
+    
+    // UI elements that the script controls
     public TimerBarScript timeBar;
     public TurnTimerScript timer;
     public WhoseTurnScript whoseTurn;
 	public EndButtonTextScript endText;
 	public EndButtonScript endButton;
 
+	// tells if its the player's turn or not
     private bool playerTurn = false;
+    
+    // keeps track of time on the current turn
     private float turnCounter;
 
+    // starting time for the game
     [SerializeField] float totalTime = 90.0f;
     
-    // Start is called before the first frame update
     void Start()
     {
         // set the initial time to healthbar
         timeBar.startTime(90);
 
+        // set round time
         turnCounter = 10.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // increment the counter
+        // decrease the counter by time
         turnCounter -= Time.deltaTime;
 
-        // if the turn counter changes
+        // if the turn ends
         if (turnCounter <= 0)
         {
-            // change the turn
+            // if its the movement turn when round ends
             if (!playerTurn)
             {
+	            // change the turn
                 playerTurn = true;
                 whoseTurn.newTurn("Player's Turn");
                 whoseTurn.changeColors(0, 255, 255, 255);
@@ -47,8 +54,10 @@ public class CanvasKeeperScript : MonoBehaviour
 				endButton.becomeUninteractable();
             }
 
+            // if its the players turn when the round ends
             else
             {
+	            // change the turn
                 playerTurn = false;
                 whoseTurn.newTurn("Movement Turn");
                 whoseTurn.changeColors(255, 255, 0, 255);
@@ -56,9 +65,11 @@ public class CanvasKeeperScript : MonoBehaviour
 				endButton.becomeInteractable();
             }
 
+            // reset round time
             turnCounter = 10.0f;
         }
 
+        // update the UI timer
         timer.changeTimer(turnCounter);
         
         
@@ -72,6 +83,7 @@ public class CanvasKeeperScript : MonoBehaviour
         }
     }
 
+    // when the player pushes the "END TURN" button
 	public void endTurn(){
 		
 		playerTurn = false;

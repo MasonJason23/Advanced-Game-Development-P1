@@ -9,13 +9,12 @@ public class TurnTimerScript : MonoBehaviour
     private float timeRemaining;
 
     [SerializeField] TMP_Text timerText;
-    // Start is called before the first frame update
+
     void Start()
     {
         timeRemaining = startingTime;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         timerText.text = "TURN TIME: " + timeRemaining.ToString("F0");

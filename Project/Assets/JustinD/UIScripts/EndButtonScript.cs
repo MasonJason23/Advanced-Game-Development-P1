@@ -6,23 +6,20 @@ using UnityEngine.UI;
 public class EndButtonScript : MonoBehaviour
 {
     public Button endButton;
-    // Start is called before the first frame update
+
     void Start()
     {
+        // button starts non-interactable
         endButton.interactable = !endButton.interactable;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // set to interactable
     public void becomeInteractable()
     {
         endButton.interactable = endButton.interactable;
     }
 
+    // set to not interactable
     public void becomeUninteractable()
     {
         endButton.interactable = !endButton.interactable;
