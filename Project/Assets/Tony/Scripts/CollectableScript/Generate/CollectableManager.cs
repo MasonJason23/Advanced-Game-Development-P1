@@ -24,7 +24,7 @@ namespace Generate{
         #endregion
 
         #region Generate Collectable Object part
-        public GameObject boat;
+        public Vector3 mapCenter;
         public Collectables Coin; //We can change Coin to be a list, that way we can pick random things to generate.
         public Command coinGenerate; // Same as top, we can make a command list to generate collectable items.
 
@@ -71,7 +71,7 @@ namespace Generate{
             if (Coin == null)
                 Debug.Log("Error");
 
-            Vector3 randomPosition = new Vector3(randomX + boat.transform.position.x, boat.transform.position.y, boat.transform.position.z + randomZ);
+            Vector3 randomPosition = new Vector3(randomX + mapCenter.x, mapCenter.y, mapCenter.z + randomZ);
 
             return randomPosition;
 
