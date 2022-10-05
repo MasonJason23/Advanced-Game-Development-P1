@@ -13,8 +13,12 @@ public class WindZone : MonoBehaviour
 
     public float windSpeed;
 
+    public bool boatPhase = false;
+
     private void Start()
     {
+        FindObjectOfType<GameManager>().changePhase += UpdateCurrentState;
+        
         var localScale = gameObject.transform.localScale;
         localScale *= Random.Range(1, 10);
         gameObject.transform.localScale = localScale;
@@ -26,6 +30,7 @@ public class WindZone : MonoBehaviour
 
     void Update()
     {
+        if (!boatPhase) return; 
         Move();
     }
  
@@ -51,6 +56,11 @@ public class WindZone : MonoBehaviour
  
         Destroy(gameObject);
         wind_spawner.wind_zone_count -= 1;
+    }
+
+    void UpdateCurrentState(GamePhase state)
+    {
+        boatPhase = state == GamePhase.BOATPHASE;
     }
 
     void OnTriggerStay(Collider other)
