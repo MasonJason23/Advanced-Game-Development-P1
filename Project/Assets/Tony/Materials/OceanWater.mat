@@ -81,8 +81,8 @@ Material:
     - _WaveSpeed: 0.1
     - _Wave_Height: 0
     m_Colors:
-    - _Bottom_Color: {r: 0.11992702, g: 0.22589883, b: 0.3301887, a: 0}
+    - _Bottom_Color: {r: 0.109914556, g: 0.17887585, b: 0.24528301, a: 0}
     - _Deep_Water_Color: {r: 0, g: 0.7193334, b: 0.83, a: 0.7607843}
     - _Shallow_Water_Color: {r: 0.47, g: 0.9735, b: 1, a: 0.509804}
-    - _Top_Color: {r: 0.12771447, g: 0.73959154, b: 0.7735849, a: 0}
+    - _Top_Color: {r: 0.10980392, g: 0.18039216, b: 0.24705882, a: 0}
   m_BuildTextureStacks: []
