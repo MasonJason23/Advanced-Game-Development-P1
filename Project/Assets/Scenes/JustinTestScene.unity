@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.56184906, g: 0.72206545, b: 0.81800187, a: 1}
+  m_IndirectSpecularColor: {r: 0.5619456, g: 0.72211206, b: 0.8180093, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2009,6 +2009,18 @@ PrefabInstance:
       propertyPath: SailSlider
       value: 
       objectReference: {fileID: 173600545}
+    - target: {fileID: 1039894573260116441, guid: 6988a60f4e3dadb4391a31a8f0463c89, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8150796093169400032, guid: 81f3769ab2b82604aad39f57de409e99, type: 3}
+    - target: {fileID: 1039894573260158047, guid: 6988a60f4e3dadb4391a31a8f0463c89, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6181552075217717532, guid: 81f3769ab2b82604aad39f57de409e99, type: 3}
+    - target: {fileID: 1039894573260197003, guid: 6988a60f4e3dadb4391a31a8f0463c89, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 1798617992582097628, guid: 81f3769ab2b82604aad39f57de409e99, type: 3}
     - target: {fileID: 1039894573263027083, guid: 6988a60f4e3dadb4391a31a8f0463c89, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -3454,7 +3466,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1330914775}
-  m_LocalRotation: {x: 0.30961832, y: -3e-45, z: 1e-45, w: 0.9508609}
+  m_LocalRotation: {x: 0.3096183, y: -1e-45, z: -0, w: 0.9508609}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4978,7 +4990,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035287257}
-  m_LocalRotation: {x: 0.2340776, y: -0.000000028974354, z: 0.0000000069760566, w: 0.9722179}
+  m_LocalRotation: {x: 0.23407762, y: -9.8701785e-17, z: 5.656772e-17, w: 0.9722179}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

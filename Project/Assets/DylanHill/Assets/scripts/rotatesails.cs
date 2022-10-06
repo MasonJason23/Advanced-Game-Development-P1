@@ -26,7 +26,7 @@ public class rotatesails : MonoBehaviour
 
         if (transform.rotation.y > -30 && transform.rotation.y < 30)
         {
-            transform.Rotate(0f,((SailSlider.value / 15) * Time.deltaTime),0f);
+            transform.Rotate(0f,((SailSlider.value / 5) * Time.deltaTime),0f);
         }
         
         //transform.Rotate(0f,((SailSlider.value / 15) * Time.deltaTime),0f);
