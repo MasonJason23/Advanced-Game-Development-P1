@@ -103,10 +103,6 @@ public class GameManager : MonoBehaviour
 
         // Decrease player time limit (Player Phase)
         currentPlayerTL -= Time.deltaTime;
-        // if (playerTimerText)
-        // {
-        //     playerTimerText.text = currentPlayerTL.ToString("F1");
-        // }
 
         // Ends the game
         if (state == GamePhase.END)
