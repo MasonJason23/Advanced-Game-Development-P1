@@ -30,10 +30,8 @@ public class GameManager : MonoBehaviour
     public bool stopUpdating = false;
 
     // UI reference
-    public TextMeshProUGUI gameStateText; // to be deleted
     public TextMeshProUGUI gameScoreText; // required
-    public TextMeshProUGUI playerTimerText; // to be deleted
-
+    
     // Keep track of player's time limit and score
     public int gameScore = 0;
     public float playerTimeLimit = 10f;
@@ -123,14 +121,12 @@ public class GameManager : MonoBehaviour
     void SetupPlayingField()
     {
         // Missing UI reference
-        if (!gameStateText || !playerTimerText || !gameScoreText || !gameOverScreen)
+        if (!gameScoreText || !gameOverScreen)
         {
             Debug.Log("Missing UI reference component(s)");
         }
 
         // Initialize UI text, if applicable
-        ChangeGameStateText(state);
-        if (playerTimerText) playerTimerText.text = currentPlayerTL.ToString("F1");
         if (gameScoreText) gameScoreText.text = gameScore.ToString();
 
         // Setting player time limit
@@ -151,26 +147,11 @@ public class GameManager : MonoBehaviour
             state = GamePhase.BOATPHASE;
         else if (state == GamePhase.BOATPHASE) state = GamePhase.PLAYERTURN;
 
-        // Change UI text
-        ChangeGameStateText(state);
-
         // Invoke event
         changePhase?.Invoke(state);
 
         // Reset player time
         currentPlayerTL = playerTimeLimit;
-    }
-
-    // Changing UI text based on game state
-    void ChangeGameStateText(GamePhase state)
-    {
-        // Checks if UI is attached then change UI text, if true
-        if (gameStateText)
-        {
-            if (state == GamePhase.PLAYERTURN) gameStateText.text = "Player Turn Phase";
-            else if (state == GamePhase.BOATPHASE) gameStateText.text = "Sailboat Phase";
-            else if (state == GamePhase.END) gameStateText.text = "Game Over";
-        }
     }
 
     IEnumerator DisablePlayerUI()
