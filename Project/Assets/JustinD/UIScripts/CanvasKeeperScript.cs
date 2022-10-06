@@ -26,7 +26,6 @@ public class CanvasKeeperScript : MonoBehaviour
 	public string movementPopUp;
 	public string playerPopUp;
 	public PlayerTurnPopupScript playerPop;
-	public MovementTurnPopupScript movementPop;
 	private bool hasSwitched;
     
     // Strings used by Justin
