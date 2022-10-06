@@ -13,6 +13,7 @@ public class CanvasKeeperScript : MonoBehaviour
     public TimerBarScript timeBar;
     public TurnTimerScript timer;
     public WhoseTurnScript whoseTurn;
+	//public MovementTurnPopupScript movementPop;
 
     // Not in use at the moment
     // public EndButtonTextScript endText;
@@ -20,6 +21,12 @@ public class CanvasKeeperScript : MonoBehaviour
 
 	// tells if its the player's turn or not
     private bool playerTurn = false;
+
+	//animations
+	public string movementPopUp;
+	public string playerPopUp;
+	public PlayerTurnPopupScript playerPop;
+	private bool hasSwitched;
     
     // Strings used by Justin
     const string playerPhase = "Player's Turn";
@@ -54,15 +61,24 @@ public class CanvasKeeperScript : MonoBehaviour
 	    // turnCounter gets "turnCounter" from GameManager
         turnCounter = GameManager.GmInstance.currentPlayerTL;
 
+		if (turnCounter > 0.09f)
+		{
+			hasSwitched = false;
+		}
+
         // if the turn ends
-        if (turnCounter <= 0.09f)
+        if (turnCounter <= 0.09f && hasSwitched == false)
         {
+			hasSwitched = true;
             // if its the movement turn when round ends
             if (!playerTurn)
             {
 	            // change the turn
                 whoseTurn.newTurn(playerPhase);
                 whoseTurn.changeColors(0, 255, 255, 255);
+
+				// add animations
+				playerPop.PopUp("Player Turn");
 				
                 // Implementation needs rework
                 // endText.changeColors(0, 0, 0, 255);
@@ -76,6 +92,10 @@ public class CanvasKeeperScript : MonoBehaviour
                 whoseTurn.newTurn(boatPhase);
                 whoseTurn.changeColors(255, 255, 0, 255);
                 
+				// add animations
+				//movementPop.PopUp();
+				playerPop.PopUp("Movement Turn");
+				
                 // Implementation needs rework
 				// endText.changeColors(255, 255, 255, 255);
 				// endButton.becomeInteractable();
