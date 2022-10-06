@@ -46,19 +46,19 @@ Material:
     - _Displacement: 3
     - _Fade: 1
     - _FrenelStrength: 0
-    - _Normal_Stregenth: 0.219
+    - _Normal_Stregenth: 0
     - _Offset: 0
     - _QueueControl: 1
     - _QueueOffset: 0
-    - _Smoothness: 1
+    - _Smoothness: 0.934
     - _Strength: 1
     - _WaveSpeed: 0.05
     m_Colors:
     - _Color: {r: 0, g: 1, b: 1, a: 0}
     - _Color_1: {r: 0, g: 0.08627451, b: 0.3019608, a: 0}
-    - _Deep_Water_Color: {r: 0.58873266, g: 0.8684168, b: 0.9245283, a: 0.45490196}
+    - _Deep_Water_Color: {r: 0, g: 0.16525824, b: 0.2924528, a: 0.45490196}
     - _FrenelColor: {r: 0, g: 0, b: 0, a: 0}
-    - _Shallow_Water_Color: {r: 0, g: 0.9898968, b: 1, a: 0.46666667}
+    - _Shallow_Water_Color: {r: 0, g: 0.3495205, b: 0.5566038, a: 0.46666667}
   m_BuildTextureStacks: []
 --- !u!114 &580102349484678006
 MonoBehaviour:
