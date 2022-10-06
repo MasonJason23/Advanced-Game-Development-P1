@@ -39,7 +39,7 @@ public class boatsteering : MonoBehaviour
         var comp = (WheelSlider.value / 200);
         var eulerAngles = new Vector3(0, WheelSlider.value, 0);
         wheel.eulerAngles = eulerAngles;
-        boat.rotation = Quaternion.RotateTowards(wheel, boat.transform.rotation, Time.smoothDeltaTime * .1f);
+        boat.rotation = Quaternion.RotateTowards(wheel, boat.transform.rotation, Time.smoothDeltaTime * .01f);
 
         boat.velocity = boatForward;
     }

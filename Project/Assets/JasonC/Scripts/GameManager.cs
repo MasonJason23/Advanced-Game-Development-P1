@@ -156,4 +156,23 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1f);
         playerUI.SetActive(false);
     }
+
+    void IncreaseHealth()
+    {
+        if (playerHealth < 50)
+        {
+            playerHealth += 10;
+        }
+    }
+
+    private void OnEnable()
+    {
+        EventHandler.AfterCollectItem += IncreaseHealth;
+        playerHealth -= 10;
+    }
+
+    private void OnDisable()
+    {
+        EventHandler.AfterCollectItem -= IncreaseHealth;
+    }
 }
