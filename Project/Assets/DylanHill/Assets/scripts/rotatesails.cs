@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class rotatesails : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class rotatesails : MonoBehaviour
     public float boatSpeed = 15.0f;
 
     public float speed=0;
+
+    public Slider SailSlider;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +22,8 @@ public class rotatesails : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0f,(Input.GetAxis("Horizontal")*speed*Time.deltaTime),0f);
+        //transform.Rotate(0f,(Input.GetAxis("Horizontal")*speed*Time.deltaTime),0f);
+        transform.Rotate(0f,(SailSlider.value * Time.deltaTime),0f);
         Vector3 sailAngles = GameObject.Find("driversail").transform.right;
         float actualspeed = Mathf.Abs(boatSpeed * Mathf.Cos((Mathf.PI/180)*Vector3.Angle(windVector.normalized, sailAngles.normalized)));
         Debug.Log(Mathf.Cos((Mathf.PI/180)*Vector3.Angle(windVector.normalized, sailAngles.normalized)));
