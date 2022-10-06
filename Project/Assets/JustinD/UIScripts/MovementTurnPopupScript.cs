@@ -9,10 +9,9 @@ public class MovementTurnPopupScript : MonoBehaviour
     public Animator animator;
     public TMP_Text popUpText;
 
-    public void PopUp(string text)
+    public void PopUp()
     {
         popUpBox.SetActive(true);
-        popUpText.text = text;
-        animator.SetTrigger("pop");
+        animator.SetTrigger("MovementPop");
     }
 }

@@ -1418,6 +1418,8 @@ GameObject:
   m_Component:
   - component: {fileID: 577106298}
   - component: {fileID: 577106299}
+  - component: {fileID: 577106301}
+  - component: {fileID: 577106300}
   m_Layer: 5
   m_Name: Player UI
   m_TagString: Untagged
@@ -1466,6 +1468,36 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &577106300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577106297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2786991816bf264698f703ba7bb0487, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpBox: {fileID: 921614675}
+  animator: {fileID: 921614679}
+  popUpText: {fileID: 1978057206}
+--- !u!114 &577106301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577106297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 306d665d0a4d3ad4a939505d6a7d4ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUpBox: {fileID: 1604331217}
+  animator: {fileID: 1604331221}
+  popUpText: {fileID: 1102886321}
 --- !u!1 &634573092
 GameObject:
   m_ObjectHideFlags: 3
@@ -2298,6 +2330,7 @@ GameObject:
   - component: {fileID: 921614676}
   - component: {fileID: 921614678}
   - component: {fileID: 921614677}
+  - component: {fileID: 921614679}
   m_Layer: 5
   m_Name: PlayerPopup
   m_TagString: Untagged
@@ -2323,7 +2356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -575, y: 0}
+  m_AnchoredPosition: {x: -7, y: 29.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &921614677
@@ -2364,6 +2397,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921614675}
   m_CullTransparentMesh: 1
+--- !u!95 &921614679
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921614675}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 41fa03748caef8d4d8bfd449bc1be253, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &977337625
 GameObject:
   m_ObjectHideFlags: 0
@@ -2925,8 +2978,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 0
+  m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4210,8 +4263,6 @@ GameObject:
   - component: {fileID: 1594243842}
   - component: {fileID: 1594243846}
   - component: {fileID: 1594243847}
-  - component: {fileID: 1594243849}
-  - component: {fileID: 1594243848}
   m_Layer: 5
   m_Name: MainUI
   m_TagString: Untagged
@@ -4337,37 +4388,11 @@ MonoBehaviour:
   timeBar: {fileID: 977337627}
   timer: {fileID: 1785448617}
   whoseTurn: {fileID: 550923723}
+  movementPopUp: 
+  playerPopUp: 
+  playerPop: {fileID: 577106300}
+  movementPop: {fileID: 577106301}
   totalTime: 90
---- !u!114 &1594243848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594243841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306d665d0a4d3ad4a939505d6a7d4ce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popUpBox: {fileID: 0}
-  animator: {fileID: 0}
-  popUpText: {fileID: 0}
---- !u!114 &1594243849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1594243841}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2786991816bf264698f703ba7bb0487, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  popUpBox: {fileID: 0}
-  animator: {fileID: 0}
-  popUpText: {fileID: 0}
 --- !u!1 &1604331217
 GameObject:
   m_ObjectHideFlags: 0
@@ -4379,6 +4404,7 @@ GameObject:
   - component: {fileID: 1604331218}
   - component: {fileID: 1604331220}
   - component: {fileID: 1604331219}
+  - component: {fileID: 1604331221}
   m_Layer: 5
   m_Name: MovementPopup
   m_TagString: Untagged
@@ -4404,8 +4430,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -574, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 24, y: 64.9}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604331219
 MonoBehaviour:
@@ -4445,6 +4471,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604331217}
   m_CullTransparentMesh: 1
+--- !u!95 &1604331221
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604331217}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d811a1729eacc54b8dadd9dc70d47a1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1648604516
 GameObject:
   m_ObjectHideFlags: 0
@@ -5270,7 +5316,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -53.188225, y: 0, z: -176.82939, w: 0}
+  m_margin: {x: -53.188225, y: 0, z: -315.77747, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5390,7 +5436,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2035287257}
-  m_LocalRotation: {x: 0.23407762, y: 1.6776551e-15, z: -8.316107e-16, w: 0.9722179}
+  m_LocalRotation: {x: 0.2340776, y: -0.000000028974354, z: 0.0000000069760566, w: 0.9722179}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

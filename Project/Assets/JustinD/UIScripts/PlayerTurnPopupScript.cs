@@ -13,6 +13,6 @@ public class PlayerTurnPopupScript : MonoBehaviour
     {
         popUpBox.SetActive(true);
         popUpText.text = text;
-        animator.SetTrigger("pop");
+        animator.SetTrigger("PlayerPop");
     }
 }
