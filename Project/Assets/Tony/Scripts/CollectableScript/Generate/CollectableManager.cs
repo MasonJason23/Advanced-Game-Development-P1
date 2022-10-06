@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Generate{
+namespace Generate
+{
 
     public class CollectableManager : MonoBehaviour
     {
@@ -39,14 +40,26 @@ namespace Generate{
         private void Start()
         {
             coinGenerate = new CoinGenerate(Coin.gameObject);
+            for (int i = 0; i < 10; i++)
+            {
+                GenerateCollectableItem();
+            }
+
+
+
+        }
+        private void OnEnable()
+        {
+            EventHandler.AfterCollectItem += GenerateCollectableItem;
+        }
+        private void OnDisable()
+        {
+            EventHandler.AfterCollectItem -= GenerateCollectableItem;
         }
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                GenerateCollectableItem();
-            }
+
         }
 
         private Vector3 RandomPosition()
@@ -76,23 +89,22 @@ namespace Generate{
             return randomPosition;
 
         }
-        private void GenerateCollectableItem()
+
+        public void GenerateCollectableItem()
         {
-                var position = RandomPosition();
-                GameObject collectableItem = collectablePool.Find(s => s.itemID == Coin.itemID)?.gameObject;
+            var position = RandomPosition();
+            GameObject collectableItem = collectablePool.Find(s => s.itemID == Coin.itemID)?.gameObject;
 
-                if(collectableItem != null)
-                {
-                    collectableItem.transform.position = RandomPosition();
-                    collectablePool.Remove(collectableItem.GetComponent<Collectables>());
-                }
-                else
-                {
-                    collectableItem = coinGenerate.Execute(coinParent);
-                    collectableItem.transform.position = position;
-                }
-
-                EventHandler.CallCollectableItemAwake(collectableItem);
+            if (collectableItem != null)
+            {
+                collectableItem.transform.position = RandomPosition();
+                collectablePool.Remove(collectableItem.GetComponent<Collectables>());
+            }
+            else
+            {
+                collectableItem = coinGenerate.Execute(coinParent);
+                collectableItem.transform.position = position;
+            }
         }
         #endregion
     }
