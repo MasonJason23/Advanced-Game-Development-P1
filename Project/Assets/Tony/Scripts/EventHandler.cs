@@ -8,4 +8,10 @@ public class EventHandler
     {
         CollectableItemAwake?.Invoke(gameObject);
     }
+
+    public static event Action CollectItem;
+    public static void CallCollectItem()
+    {
+        CollectItem?.Invoke();
+    }
 }
