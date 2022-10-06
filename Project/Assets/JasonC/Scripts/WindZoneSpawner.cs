@@ -16,16 +16,10 @@ public class WindZoneSpawner : MonoBehaviour
  
     public float fastest_speed = 12.0f;
     public float slowest_speed = 0.75f;
-
-    public bool populateAtStart = false;
-
-    public bool boatPhase = false;
-
+ 
     void Start()
     {
-        FindObjectOfType<GameManager>().changePhase += UpdateCurrentState;
-        
-        if (populateAtStart) InitialPopulation();
+        InitialPopulation();
     }
  
     void Update()
@@ -100,10 +94,5 @@ public class WindZoneSpawner : MonoBehaviour
         wind_script.speed = Random.Range(slowest_speed, fastest_speed);
  
         return wind_script;
-    }
-    
-    void UpdateCurrentState(GamePhase state)
-    {
-        boatPhase = state == GamePhase.BOATPHASE;
     }
 }
