@@ -8,18 +8,15 @@ namespace Generate
     public class Collectables : MonoBehaviour
     {
         public int itemID;
-        public float waitSecond;
-        private Coroutine coroutine;
+        //private Coroutine coroutine;
 
         private void OnEnable()
         {
-            EventHandler.CollectableItemAwake += StartCount;
             EventHandler.CollectItem += CollectCoin;
         }
 
         private void OnDisable()
         {
-            EventHandler.CollectableItemAwake -= StartCount;
             EventHandler.CollectItem -= CollectCoin;
         }
 
@@ -29,30 +26,29 @@ namespace Generate
             return target;
         }
 
-        private void StartCount(GameObject gameObject)
-        {
-            coroutine = StartCoroutine("WaitAndGotoObjectPool", gameObject);
-        }
+        // private void StartCount(GameObject gameObject)
+        // {
+        //     coroutine = StartCoroutine("WaitAndGotoObjectPool", gameObject);
+        // }
 
-        IEnumerator WaitAndGotoObjectPool(GameObject gameObject)
-        {
-            yield return new WaitForSeconds(waitSecond);
-            if (CollectableManager.Instance.collectablePool.Contains(gameObject.GetComponent<Collectables>()) == false) CollectableManager.Instance.collectablePool.Add(gameObject.GetComponent<Collectables>());
-            gameObject.transform.position = new Vector3(500, 500, 500);
-        }
+        // IEnumerator WaitAndGotoObjectPool(GameObject gameObject)
+        // {
+        //     if (CollectableManager.Instance.collectablePool.Contains(gameObject.GetComponent<Collectables>()) == false) CollectableManager.Instance.collectablePool.Add(gameObject.GetComponent<Collectables>());
+        //     gameObject.transform.position = new Vector3(500, 500, 500);
+        // }
 
-        public void CollectCoin()
+        public void CollectCoin(GameObject _gameObject)
         {
-            StopCoroutine(coroutine);
-            if (CollectableManager.Instance.collectablePool.Contains(gameObject.GetComponent<Collectables>()) == false) CollectableManager.Instance.collectablePool.Add(gameObject.GetComponent<Collectables>());
-            gameObject.transform.position = new Vector3(500, 500, 500);
+            if (CollectableManager.Instance.collectablePool.Contains(_gameObject.GetComponent<Collectables>()) == false) CollectableManager.Instance.collectablePool.Add(_gameObject.GetComponent<Collectables>());
+            _gameObject.transform.position = new Vector3(500, 500, 500);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("player"))
+            if (other.tag == "Player")
             {
-                EventHandler.CallCollectItem();
+                EventHandler.CallCollectItem(this.gameObject);
+                EventHandler.CallAfterCollectItem();
             }
         }
 

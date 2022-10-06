@@ -3,15 +3,21 @@ using System;
 
 public class EventHandler
 {
-    public static event Action<GameObject> CollectableItemAwake;
-    public static void CallCollectableItemAwake(GameObject gameObject)
+    public static event Action CollectableItemAwake;
+    public static void CallCollectableItemAwake()
     {
-        CollectableItemAwake?.Invoke(gameObject);
+        CollectableItemAwake?.Invoke();
     }
 
-    public static event Action CollectItem;
-    public static void CallCollectItem()
+    public static event Action<GameObject> CollectItem;
+    public static void CallCollectItem(GameObject gameObject)
     {
-        CollectItem?.Invoke();
+        CollectItem?.Invoke(gameObject);
+    }
+
+    public static event Action AfterCollectItem;
+    public static void CallAfterCollectItem()
+    {
+        AfterCollectItem?.Invoke();
     }
 }
