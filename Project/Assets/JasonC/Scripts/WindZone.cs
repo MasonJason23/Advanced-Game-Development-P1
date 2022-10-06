@@ -65,6 +65,6 @@ public class WindZone : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        other.attachedRigidbody.AddForce(transform.up * windSpeed, ForceMode.Acceleration);
+        // other.attachedRigidbody.AddForce(transform.up * windSpeed, ForceMode.Acceleration);
     }
 }
